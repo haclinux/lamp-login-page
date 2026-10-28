@@ -19,7 +19,7 @@ A responsive lamp-themed login page made with plain HTML, CSS, and JavaScript. N
 - Google/GitHub buttons open clearly labeled, local demo account choosers with sample `.test` profiles.
 - Toast messages explain where secure sign-in, registration, password reset, and help integrations belong.
 - Responsive layout for desktop and mobile.
-- Animated fireflies, warm ambient lighting, and reduced-motion support.
+- Drifting ambient light, animated fireflies, and a gently floating login card, with reduced-motion support.
 
 ## Important
 
