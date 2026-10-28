@@ -119,14 +119,7 @@ function setActiveView(activeView, inactiveView) {
 }
 
 function waitForCardResize() {
-  return new Promise((resolve) => {
-    const timer = window.setTimeout(resolve, 500);
-    cardViews.addEventListener("transitionend", (event) => {
-      if (event.target !== cardViews || event.propertyName !== "height") return;
-      window.clearTimeout(timer);
-      resolve();
-    }, { once: true });
-  });
+  return new Promise((resolve) => window.setTimeout(resolve, 450));
 }
 
 async function activateView(activeView, inactiveView) {
