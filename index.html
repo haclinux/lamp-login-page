@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#21170d" />
+  <title>Made by Developer — Lamp Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="scene lamp-off" id="scene">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="grain"></div>
+    <div class="stars" id="stars" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Made by Developer home">
+        <span class="brand-mark"><span></span></span>
+        <span>madebydeveloper</span>
+      </a>
+    </header>
+
+    <section class="login-layout">
+      <div class="lamp-area">
+        <div class="lamp-visual" aria-hidden="true">
+          <span class="lamp-halo"></span>
+          <span class="light-beam"></span>
+          <span class="lamp-neck"></span>
+          <span class="lamp-base"></span>
+          <span class="lamp-shade"><span class="shade-inner"></span></span>
+          <span class="lamp-floor-glow"></span>
+        </div>
+        <button class="lamp-switch" id="lampToggle" type="button" aria-label="Pull the switch to turn the lamp on" aria-pressed="false" title="Pull down to switch the lamp on or off">
+          <span class="switch-stem" aria-hidden="true"></span>
+          <span class="switch-knob" aria-hidden="true"></span>
+        </button>
+        <span class="lamp-hint" id="lampHint">PULL THE SWITCH TO TURN ON THE LIGHT</span>
+      </div>
+
+      <section class="login-card" id="authCard" aria-label="Account access" inert>
+        <div class="card-top">
+          <div class="mini-icon"><span class="mini-icon-glow"></span><span class="mini-icon-shade"></span></div>
+          <span class="secure-label"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2M3.5 7h9v7h-9z"/></svg> PRIVATE ACCOUNT ACCESS</span>
+        </div>
+        <div class="card-views">
+          <section class="view-panel is-active" id="loginView" aria-labelledby="login-title">
+            <h2 id="login-title">Welcome back<span class="gold">.</span></h2>
+            <p class="card-subtitle">Your next chapter starts here.</p>
+            <form id="loginForm" novalidate>
+              <label for="email">Email address</label>
+              <div class="input-wrap">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+              </div>
+              <div class="label-row">
+                <label for="password">Password</label>
+                <a href="#" class="text-link" id="forgotLink">Forgot password?</a>
+              </div>
+              <div class="input-wrap">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg>
+                <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required minlength="8" />
+                <button type="button" class="show-password" data-password-toggle="password" aria-label="Show password">SHOW</button>
+              </div>
+              <div class="form-options">
+                <label class="remember-option"><input id="rememberMe" name="rememberMe" type="checkbox" /> <span>Remember me</span></label>
+              </div>
+              <p class="form-message" id="loginMessage" role="alert" aria-live="assertive"></p>
+              <button class="sign-in" type="submit"><span>Sign in</span><span class="button-arrow">↗</span></button>
+              <div class="divider"><span></span><small>OR CONTINUE WITH</small><span></span></div>
+              <div class="social-row">
+                <button type="button" class="social-button" id="googleButton"><span class="google-g">G</span> Google</button>
+                <button type="button" class="social-button" id="githubButton"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.3-4.3-2.2-6-2.5M15 21v-3.5c0-1 .1-1.7-.5-2.3 3.3-.4 6.8-1.6 6.8-7.2a5.6 5.6 0 0 0-1.5-3.9 5.2 5.2 0 0 0-.1-3.8S18.5 0 15 2.3a13.4 13.4 0 0 0-7 0C4.5 0 3.3.3 3.3.3a5.2 5.2 0 0 0-.1 3.8 5.6 5.6 0 0 0-1.5 3.9c0 5.6 3.5 6.8 6.8 7.2-.6.5-.6 1.1-.6 2.3V21"/></svg> GitHub</button>
+              </div>
+            </form>
+            <p class="signup-copy">Don't have an account? <a href="#" class="text-link" id="signupLink">Create account <span>↗</span></a></p>
+          </section>
+
+          <section class="view-panel" id="registerView" aria-labelledby="register-title" aria-hidden="true" inert>
+            <h2 id="register-title">Create your new account<span class="gold">.</span></h2>
+            <form id="registerForm" novalidate>
+              <label for="fullName">Full name</label>
+              <div class="input-wrap">
+                <input id="fullName" name="fullName" type="text" placeholder="Your name" autocomplete="name" required />
+              </div>
+              <label for="registerEmail">Email address</label>
+              <div class="input-wrap">
+                <input id="registerEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+              </div>
+              <label for="registerPassword">Password</label>
+              <div class="input-wrap">
+                <input id="registerPassword" name="password" type="password" placeholder="At least 8 characters" autocomplete="new-password" required minlength="8" />
+                <button type="button" class="show-password" data-password-toggle="registerPassword" aria-label="Show password">SHOW</button>
+              </div>
+              <label for="confirmPassword">Confirm password</label>
+              <div class="input-wrap">
+                <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Enter your password again" autocomplete="new-password" required minlength="8" />
+                <button type="button" class="show-password" data-password-toggle="confirmPassword" aria-label="Show password">SHOW</button>
+              </div>
+              <p class="form-message" id="registerMessage" role="alert" aria-live="assertive"></p>
+              <button class="sign-in" type="submit"><span>Create account</span><span class="button-arrow">↗</span></button>
+            </form>
+            <p class="signup-copy">Already have an account? <a href="#" class="text-link" id="signinLink">Sign in</a></p>
+          </section>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 MADEBYDEVELOPER</span>
+      <span class="footer-center"><span class="tiny-star">✦</span> MADE FOR THE MOMENTS IN BETWEEN</span>
+      <div class="footer-links"><a href="#" id="privacyLink">PRIVACY</a><span>·</span><a href="#" id="helpLink">NEED HELP?</a></div>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog class="account-demo" id="accountDemo" aria-labelledby="accountDemoTitle">
+      <div class="account-demo-header">
+        <div class="demo-provider-mark" id="demoProviderMark" aria-hidden="true">
+          <svg class="google-provider-logo" viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11c-.5 2.5-1.9 4.6-4.1 6v5.1h6.6c3.9-3.6 6.1-8.8 6.1-14.8z"/>
+            <path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.8l-6.6-5.1c-1.8 1.2-4.1 2-6.9 2-5.3 0-9.8-3.6-11.4-8.4H5.8v5.3C9.2 39.5 16 44 24 44z"/>
+            <path fill="#FBBC05" d="M12.6 27.7a12 12 0 0 1 0-7.4V15H5.8a20 20 0 0 0 0 18z"/>
+            <path fill="#EA4335" d="M24 11.9c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 5.9 29.5 4 24 4 16 4 9.2 8.5 5.8 15l6.8 5.3c1.6-4.8 6.1-8.4 11.4-8.4z"/>
+          </svg>
+          <span class="github-provider-mark">GH</span>
+        </div>
+        <button class="demo-close" id="closeAccountDemo" type="button" aria-label="Close demo account chooser">×</button>
+      </div>
+      <h2 id="accountDemoTitle">Choose a Google account</h2>
+      <p class="account-demo-description">Choose a sample profile. This local preview does not contact Google or GitHub.</p>
+      <div class="account-demo-list" id="accountDemoList"></div>
+    </dialog>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
