@@ -111,9 +111,10 @@ form label { display: block; color: #d3d1c8; font-size: 10px; font-weight: 500; 
 .social-button:hover { transform: translateY(-1px); background: rgba(255,232,193,.09); border-color: rgba(255,232,193,.34); }
 .google-g { font-weight: 700; font-size: 14px; color: #d9c16f; }
 .social-button svg { width: 14px; height: 14px; fill: none; stroke: #d8d7d0; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.signup-copy { margin: 22px 0 0; text-align: center; color: #b5a487; font-size: 10px; }
-.signup-copy .text-link { margin-left: 3px; }
-.signup-copy .text-link span { font-size: 12px; }
+.signup-copy { margin: 16px 0 0; text-align: center; color: #d3c09d; font-size: 11px; }
+.signup-copy .text-link { display: inline-flex; align-items: center; gap: 5px; margin-left: 7px; padding: 7px 12px; border: 1px solid rgba(255,221,157,.38); border-radius: 999px; background: rgba(243,201,91,.1); color: #ffe08a; font-size: 11px; font-weight: 600; text-decoration: none; }
+.signup-copy .text-link:hover { border-color: rgba(255,221,157,.7); background: rgba(243,201,91,.2); color: #fff0bd; }
+.signup-copy .text-link span { font-size: 13px; }
 .footer { color: #a48f70; font-size: 8px; letter-spacing: 1.2px; gap: 18px; }
 .footer-center { display: flex; align-items: center; gap: 8px; }
 .tiny-star { color: #c6a54c; font-size: 12px; }
