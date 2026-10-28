@@ -5,6 +5,7 @@ const stars = document.getElementById("stars");
 const authCard = document.getElementById("authCard");
 const loginView = document.getElementById("loginView");
 const registerView = document.getElementById("registerView");
+const cardViews = authCard.querySelector(".card-views");
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
 const loginMessage = document.getElementById("loginMessage");
@@ -17,6 +18,9 @@ const accountDemoList = document.getElementById("accountDemoList");
 let toastTimer;
 let revealTimer;
 let switchPullStart;
+let viewSwitching = false;
+
+cardViews.style.height = `${loginView.scrollHeight}px`;
 
 function showToast(message) {
   toast.textContent = message;
@@ -105,17 +109,64 @@ function setFormMessage(element, message, isError = false) {
   element.classList.toggle("error", isError);
 }
 
-function activateView(activeView, inactiveView) {
+function setActiveView(activeView, inactiveView) {
   activeView.classList.add("is-active");
   activeView.removeAttribute("aria-hidden");
   activeView.inert = false;
   inactiveView.classList.remove("is-active");
   inactiveView.setAttribute("aria-hidden", "true");
   inactiveView.inert = true;
+}
+
+function waitForCardResize() {
+  return new Promise((resolve) => {
+    const timer = window.setTimeout(resolve, 500);
+    cardViews.addEventListener("transitionend", (event) => {
+      if (event.target !== cardViews || event.propertyName !== "height") return;
+      window.clearTimeout(timer);
+      resolve();
+    }, { once: true });
+  });
+}
+
+async function activateView(activeView, inactiveView) {
+  if (viewSwitching || activeView.classList.contains("is-active")) return;
+
+  viewSwitching = true;
+  authCard.classList.add("is-switching");
   setFormMessage(loginMessage, "");
   setFormMessage(registerMessage, "");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduceMotion) {
+    setActiveView(activeView, inactiveView);
+    cardViews.style.height = `${activeView.scrollHeight}px`;
+  } else {
+    cardViews.style.height = `${inactiveView.scrollHeight}px`;
+    cardViews.offsetHeight;
+    inactiveView.classList.remove("is-active");
+    inactiveView.setAttribute("aria-hidden", "true");
+    inactiveView.inert = true;
+    cardViews.style.height = "0px";
+    await waitForCardResize();
+
+    setActiveView(activeView, inactiveView);
+    cardViews.offsetHeight;
+    cardViews.style.height = `${activeView.scrollHeight}px`;
+    await waitForCardResize();
+  }
+
+  authCard.classList.remove("is-switching");
+  viewSwitching = false;
   activeView.querySelector("input").focus();
 }
+
+window.addEventListener("resize", () => {
+  if (!viewSwitching) {
+    const activeView = registerView.classList.contains("is-active") ? registerView : loginView;
+    cardViews.style.height = `${activeView.scrollHeight}px`;
+  }
+});
 
 document.getElementById("signupLink").addEventListener("click", (event) => {
   event.preventDefault();
